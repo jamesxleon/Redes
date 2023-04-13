@@ -25,15 +25,18 @@ class Grafo:
 
 def dibujar_spanning_tree(grafo):
     nx_grafo = nx.Graph()
+    
     for nodo in grafo.nodos:
         if nodo.tipo == "switch":
             nx_grafo.add_node(nodo.nombre)
+
     for nodo in grafo.nodos:
         if nodo.tipo == "switch":
             for vecino in grafo.aristas[nodo.nombre]:
                 if vecino in nx_grafo.nodes():
                     nx_grafo.add_edge(nodo.nombre, vecino)
-    nx_tree = nx.algorithms.minimum_spanning_tree(nx_grafo)
+
+    nx_tree = nx.algorithms.minimum_spanning_tree(nx_grafo) 
     nx.draw(nx_tree, with_labels=True)
     plt.show()
 
